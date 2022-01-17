@@ -1,0 +1,83 @@
+From 5db9d49866b3252d018830552dd34c0682895635 Mon Sep 17 00:00:00 2001
+From: Mirza Krak <mirza.krak@gmail.com>
+Date: Tue, 26 Sep 2017 06:23:52 -0400
+Subject: [PATCH] configs: rpi: enable mender requirements
+
+Which are CONFIG_BOOTCOUNT_ENV and CONFIG_BOOTCOUNT_LIMIT.
+
+Mender also requires that the environment is on MMC
+(CONFIG_ENV_IS_IN_MMC)
+
+Signed-off-by: Mirza Krak <mirza.krak@gmail.com>
+Signed-off-by: Drew Moseley <drew.moseley@northern.tech>
+---
+ configs/rpi_0_w_defconfig   | 1 +
+ configs/rpi_2_defconfig     | 1 +
+ configs/rpi_3_32b_defconfig | 1 +
+ configs/rpi_3_defconfig     | 1 +
+ configs/rpi_defconfig       | 1 +
+ include/configs/rpi.h       | 3 +++
+ 6 files changed, 8 insertions(+)
+
+diff --git a/configs/rpi_0_w_defconfig b/configs/rpi_0_w_defconfig
+index fcc2ae68c9..5a7fe6e9d4 100644
+--- a/configs/rpi_0_w_defconfig
++++ b/configs/rpi_0_w_defconfig
+@@ -36,3 +36,4 @@ CONFIG_SYS_WHITE_ON_BLACK=y
+ CONFIG_CONSOLE_SCROLL_LINES=10
+ CONFIG_PHYS_TO_BUS=y
+ CONFIG_OF_LIBFDT_OVERLAY=y
++CONFIG_ENV_IS_IN_MMC=y
+diff --git a/configs/rpi_2_defconfig b/configs/rpi_2_defconfig
+index 204af74239..39f2887e07 100644
+--- a/configs/rpi_2_defconfig
++++ b/configs/rpi_2_defconfig
+@@ -36,3 +36,4 @@ CONFIG_SYS_WHITE_ON_BLACK=y
+ CONFIG_CONSOLE_SCROLL_LINES=10
+ CONFIG_PHYS_TO_BUS=y
+ CONFIG_OF_LIBFDT_OVERLAY=y
++CONFIG_ENV_IS_IN_MMC=y
+diff --git a/configs/rpi_3_32b_defconfig b/configs/rpi_3_32b_defconfig
+index 9e142cae63..f31385f1e3 100644
+--- a/configs/rpi_3_32b_defconfig
++++ b/configs/rpi_3_32b_defconfig
+@@ -39,3 +39,4 @@ CONFIG_SYS_WHITE_ON_BLACK=y
+ CONFIG_CONSOLE_SCROLL_LINES=10
+ CONFIG_PHYS_TO_BUS=y
+ CONFIG_OF_LIBFDT_OVERLAY=y
++CONFIG_ENV_IS_IN_MMC=y
+diff --git a/configs/rpi_3_defconfig b/configs/rpi_3_defconfig
+index f46e504497..5465b10474 100644
+--- a/configs/rpi_3_defconfig
++++ b/configs/rpi_3_defconfig
+@@ -39,3 +39,4 @@ CONFIG_SYS_WHITE_ON_BLACK=y
+ CONFIG_CONSOLE_SCROLL_LINES=10
+ CONFIG_PHYS_TO_BUS=y
+ CONFIG_OF_LIBFDT_OVERLAY=y
++CONFIG_ENV_IS_IN_MMC=y
+diff --git a/configs/rpi_defconfig b/configs/rpi_defconfig
+index 82c90d40e1..3e46eacddc 100644
+--- a/configs/rpi_defconfig
++++ b/configs/rpi_defconfig
+@@ -36,3 +36,4 @@ CONFIG_SYS_WHITE_ON_BLACK=y
+ CONFIG_CONSOLE_SCROLL_LINES=10
+ CONFIG_PHYS_TO_BUS=y
+ CONFIG_OF_LIBFDT_OVERLAY=y
++CONFIG_ENV_IS_IN_MMC=y
+diff --git a/include/configs/rpi.h b/include/configs/rpi.h
+index a97550b732..bb6f4263e4 100644
+--- a/include/configs/rpi.h
++++ b/include/configs/rpi.h
+@@ -77,6 +77,9 @@
+ #define CONFIG_SYS_LOAD_ADDR		0x1000000
+ #define CONFIG_PREBOOT			"usb start"
+ 
++#define CONFIG_BOOTCOUNT_ENV
++#define CONFIG_BOOTCOUNT_LIMIT
++
+ /* Shell */
+ 
+ /* ATAGs support for bootm/bootz */
+-- 
+2.22.0
+
